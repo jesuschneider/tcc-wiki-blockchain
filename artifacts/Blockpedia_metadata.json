@@ -1,0 +1,91 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "paginas",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "autor",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "ativo",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "titulo",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"blockpedia.sol": "Blockpedia"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"blockpedia.sol": {
+			"keccak256": "0x2aa412f49920df3ead7fc9f01003bb7ed531ed085c532afcc716784c72257e9b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6855fd3a9ec5037fc6d899878d4484d002e75c3edd3c67e17e32d5a2ffecf63c",
+				"dweb:/ipfs/QmYDL4Ptk6j2A4ER9qZuhEkR4icpvyLQyAzZYqXLP4PfS5"
+			]
+		},
+		"pagina.sol": {
+			"keccak256": "0x50c90693ecabfbd4fde9ad84425205ce0f60fc5b703bf302caccdc92d68e6e42",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c80911c10424abef9dbfdfc97e9f3e92f23fb4434eccea6ea4d2871cf0ee52e2",
+				"dweb:/ipfs/QmbNmsr4MPPYmBAqH6rRKvjujTLRjSCNUfGMukTy3891dj"
+			]
+		},
+		"versao.sol": {
+			"keccak256": "0x0c54f06f74f2bfb1ed3b6c0dc7c5678a8f570bd6c938b1eb7b5c2400bc8a7e08",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://05f647ae7428d73a342dc30819d7fffac67d9cbdd1e66b099dc0d5c63de8bbfc",
+				"dweb:/ipfs/QmeEWFgkF3BTu4vm5poVgBYwVqTHXnd4dsLFRE3pvrRyz1"
+			]
+		}
+	},
+	"version": 1
+}

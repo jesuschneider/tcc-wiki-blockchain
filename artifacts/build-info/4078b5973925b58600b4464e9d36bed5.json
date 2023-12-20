@@ -1,0 +1,353 @@
+{
+	"id": "4078b5973925b58600b4464e9d36bed5",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.22",
+	"solcLongVersion": "0.8.22+commit.4fc1097e",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"pagina.sol": {
+				"content": "pragma solidity ^0.8.0;\r\n// SPDX-License-Identifier: MIT\r\n\r\nimport \"./versao.sol\";\r\n\r\nstruct Pagina {\r\n    address autor;\r\n    bool ativo;\r\n    string titulo;\r\n    Versao[] versoes;\r\n}"
+			},
+			"versao.sol": {
+				"content": "pragma solidity ^0.8.0;\r\n// SPDX-License-Identifier: MIT\r\n\r\nstruct Versao {\r\n    address autor;\r\n    bool ativo;\r\n    string conteudo;\r\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"sources": {
+			"pagina.sol": {
+				"ast": {
+					"absolutePath": "pagina.sol",
+					"exportedSymbols": {
+						"Pagina": [
+							13
+						],
+						"Versao": [
+							22
+						]
+					},
+					"id": 14,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "0:23:0"
+						},
+						{
+							"absolutePath": "versao.sol",
+							"file": "./versao.sol",
+							"id": 2,
+							"nameLocation": "-1:-1:-1",
+							"nodeType": "ImportDirective",
+							"scope": 14,
+							"sourceUnit": 23,
+							"src": "60:22:0",
+							"symbolAliases": [],
+							"unitAlias": ""
+						},
+						{
+							"canonicalName": "Pagina",
+							"id": 13,
+							"members": [
+								{
+									"constant": false,
+									"id": 4,
+									"mutability": "mutable",
+									"name": "autor",
+									"nameLocation": "115:5:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 13,
+									"src": "107:13:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_address",
+										"typeString": "address"
+									},
+									"typeName": {
+										"id": 3,
+										"name": "address",
+										"nodeType": "ElementaryTypeName",
+										"src": "107:7:0",
+										"stateMutability": "nonpayable",
+										"typeDescriptions": {
+											"typeIdentifier": "t_address",
+											"typeString": "address"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 6,
+									"mutability": "mutable",
+									"name": "ativo",
+									"nameLocation": "132:5:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 13,
+									"src": "127:10:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bool",
+										"typeString": "bool"
+									},
+									"typeName": {
+										"id": 5,
+										"name": "bool",
+										"nodeType": "ElementaryTypeName",
+										"src": "127:4:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bool",
+											"typeString": "bool"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 8,
+									"mutability": "mutable",
+									"name": "titulo",
+									"nameLocation": "151:6:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 13,
+									"src": "144:13:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 7,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "144:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 12,
+									"mutability": "mutable",
+									"name": "versoes",
+									"nameLocation": "173:7:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 13,
+									"src": "164:16:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_array$_t_struct$_Versao_$22_storage_$dyn_storage_ptr",
+										"typeString": "struct Versao[]"
+									},
+									"typeName": {
+										"baseType": {
+											"id": 10,
+											"nodeType": "UserDefinedTypeName",
+											"pathNode": {
+												"id": 9,
+												"name": "Versao",
+												"nameLocations": [
+													"164:6:0"
+												],
+												"nodeType": "IdentifierPath",
+												"referencedDeclaration": 22,
+												"src": "164:6:0"
+											},
+											"referencedDeclaration": 22,
+											"src": "164:6:0",
+											"typeDescriptions": {
+												"typeIdentifier": "t_struct$_Versao_$22_storage_ptr",
+												"typeString": "struct Versao"
+											}
+										},
+										"id": 11,
+										"nodeType": "ArrayTypeName",
+										"src": "164:8:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_array$_t_struct$_Versao_$22_storage_$dyn_storage_ptr",
+											"typeString": "struct Versao[]"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "Pagina",
+							"nameLocation": "93:6:0",
+							"nodeType": "StructDefinition",
+							"scope": 14,
+							"src": "86:98:0",
+							"visibility": "public"
+						}
+					],
+					"src": "0:184:0"
+				},
+				"id": 0
+			},
+			"versao.sol": {
+				"ast": {
+					"absolutePath": "versao.sol",
+					"exportedSymbols": {
+						"Versao": [
+							22
+						]
+					},
+					"id": 23,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 15,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "0:23:1"
+						},
+						{
+							"canonicalName": "Versao",
+							"id": 22,
+							"members": [
+								{
+									"constant": false,
+									"id": 17,
+									"mutability": "mutable",
+									"name": "autor",
+									"nameLocation": "89:5:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "81:13:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_address",
+										"typeString": "address"
+									},
+									"typeName": {
+										"id": 16,
+										"name": "address",
+										"nodeType": "ElementaryTypeName",
+										"src": "81:7:1",
+										"stateMutability": "nonpayable",
+										"typeDescriptions": {
+											"typeIdentifier": "t_address",
+											"typeString": "address"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 19,
+									"mutability": "mutable",
+									"name": "ativo",
+									"nameLocation": "106:5:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "101:10:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_bool",
+										"typeString": "bool"
+									},
+									"typeName": {
+										"id": 18,
+										"name": "bool",
+										"nodeType": "ElementaryTypeName",
+										"src": "101:4:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_bool",
+											"typeString": "bool"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 21,
+									"mutability": "mutable",
+									"name": "conteudo",
+									"nameLocation": "125:8:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 22,
+									"src": "118:15:1",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 20,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "118:6:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "Versao",
+							"nameLocation": "67:6:1",
+							"nodeType": "StructDefinition",
+							"scope": 23,
+							"src": "60:77:1",
+							"visibility": "public"
+						}
+					],
+					"src": "0:137:1"
+				},
+				"id": 1
+			}
+		}
+	}
+}
