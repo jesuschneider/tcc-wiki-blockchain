@@ -1,10 +1,28 @@
 {
 	"compiler": {
-		"version": "0.8.22+commit.4fc1097e"
+		"version": "0.8.0+commit.c7dfd78e"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "titulo",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "conteudo",
+						"type": "string"
+					}
+				],
+				"name": "criarPagina",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
 			{
 				"inputs": [
 					{
@@ -50,7 +68,7 @@
 		"compilationTarget": {
 			"blockpedia.sol": "Blockpedia"
 		},
-		"evmVersion": "shanghai",
+		"evmVersion": "istanbul",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -63,19 +81,19 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0x2aa412f49920df3ead7fc9f01003bb7ed531ed085c532afcc716784c72257e9b",
+			"keccak256": "0x8239ebb95af648be525cdb8e62560a26d3ce38b61035d5ce70205feb41284351",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6855fd3a9ec5037fc6d899878d4484d002e75c3edd3c67e17e32d5a2ffecf63c",
-				"dweb:/ipfs/QmYDL4Ptk6j2A4ER9qZuhEkR4icpvyLQyAzZYqXLP4PfS5"
+				"bzz-raw://66c5b9328758d045541863a2dbd224f1cbe1906fa09e17da838830d44a99def8",
+				"dweb:/ipfs/QmYJo5o2feUiybeActNvuMFPbBk5GUbshczSEtAREXpmTE"
 			]
 		},
 		"pagina.sol": {
-			"keccak256": "0x50c90693ecabfbd4fde9ad84425205ce0f60fc5b703bf302caccdc92d68e6e42",
+			"keccak256": "0x23af8b146aa53564cdcaacf183b8a93a8b2dc37492ac05546cd1386b8a512aea",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c80911c10424abef9dbfdfc97e9f3e92f23fb4434eccea6ea4d2871cf0ee52e2",
-				"dweb:/ipfs/QmbNmsr4MPPYmBAqH6rRKvjujTLRjSCNUfGMukTy3891dj"
+				"bzz-raw://912c63a72a302be65307f0f038feef057e2f0032c989a97d69694dedd46413f0",
+				"dweb:/ipfs/Qmd9iQ2JjPZ29V2yK5WXMJrFb3QkpXeL1N9YJ9KVPZhE9T"
 			]
 		},
 		"versao.sol": {
