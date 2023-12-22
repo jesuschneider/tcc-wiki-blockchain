@@ -6,6 +6,50 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "_ativo",
+						"type": "bool"
+					}
+				],
+				"name": "ativaDesativaBlockpedia",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ativo",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "autor",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -81,11 +125,11 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0x8239ebb95af648be525cdb8e62560a26d3ce38b61035d5ce70205feb41284351",
+			"keccak256": "0xdcc608232f457c3a41608d1c37ca1a8019b0c739be85ab410fa73365745a3d44",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://66c5b9328758d045541863a2dbd224f1cbe1906fa09e17da838830d44a99def8",
-				"dweb:/ipfs/QmYJo5o2feUiybeActNvuMFPbBk5GUbshczSEtAREXpmTE"
+				"bzz-raw://4ff880d87b0c9da04e76e4f1247e642f91a958d6ad5aa26fdb02d9e0c264b1a6",
+				"dweb:/ipfs/QmaDZnZHVaJ9sSsm9vMsypyBd2sNs4qWoK8sqm8Z7otPqd"
 			]
 		},
 		"pagina.sol": {
