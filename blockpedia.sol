@@ -56,4 +56,19 @@ contract Blockpedia
         }
         revert("Nenhuma versao valida encontrada");
     }
+
+    function adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas(uint index, string memory conteudo) public
+    {
+        require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
+        require(index < paginas.length, "Indice fora do alcance");
+        
+        Pagina storage pagina = paginas[index];
+        require(pagina.ativo == true, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
+        
+        pagina.versoes.push(Versao({
+            autor: msg.sender,
+            ativo: false,
+            conteudo: conteudo
+        }));
+    }
 }

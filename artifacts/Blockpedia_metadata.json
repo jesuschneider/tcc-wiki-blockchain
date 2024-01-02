@@ -13,6 +13,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "indice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "conteudo",
+						"type": "string"
+					}
+				],
+				"name": "adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bool",
 						"name": "_ativo",
 						"type": "bool"
@@ -144,11 +162,11 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0xb1dcffdcee48704face827f81777fe31d2b7f351587e6e3e2a0b0d8dfd9473f0",
+			"keccak256": "0x4a88861cd33edc10d3ff03cb6d8c9221e29eb737618f25994b1ef515e92847e1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://57a13a91bcb4fc08fe37033fa978ae1af521a6865db001a6b2ef4bed407ea788",
-				"dweb:/ipfs/QmVXTdvi38p63pWQB3Y6bMjjahf5N8G9ToSEDFE6vUjmLL"
+				"bzz-raw://49ece5cb6d068d7f4ec789540680c41943ea659adc1159efe20386e951446938",
+				"dweb:/ipfs/QmcccBX2cXXNrd1PzvdZvALdhAcaRJJuChBsPetc6AGDN9"
 			]
 		},
 		"pagina.sol": {
