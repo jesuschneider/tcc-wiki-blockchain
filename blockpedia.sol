@@ -7,21 +7,25 @@ contract Blockpedia
 {
     bool public ativo = true; 
     address public autor; 
+    uint256 public dataCriacao = block.timestamp;
     Pagina[] public paginas; 
 
-    constructor(){autor = msg.sender;}
+    constructor()
+    {
+        autor = msg.sender;
+    }
 
     function criarPagina(string memory titulo, string memory conteudo) public
     {
         require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(!tituloExiste(titulo), "Uma pagina com este titulo ja existe");
 
-        Pagina storage novaPagina = paginas.push();//cria nova pagina com ponteiro para o arry de paginas da blockpedia
+        Pagina storage novaPagina = paginas.push();
         novaPagina.autor = msg.sender;
         novaPagina.ativo = true;
         novaPagina.titulo = titulo;
 
-        novaPagina.versoes.push(Versao(msg.sender, true, conteudo));//adiciona primeira vercao a pagina
+        novaPagina.versoes.push(Versao(true, msg.sender, block.timestamp, conteudo));
     }
 
     function ativaDesativaBlockpedia(bool _ativo) public
@@ -66,9 +70,25 @@ contract Blockpedia
         require(pagina.ativo == true, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
         
         pagina.versoes.push(Versao({
-            autor: msg.sender,
             ativo: false,
+            autor: msg.sender,
+            dataCriacao : block.timestamp,
             conteudo: conteudo
         }));
     }
+
+    function ativaVersaoPorIndexVersoesEIndexPaginas(uint indexPagina, uint indexVersoes)public
+    {
+        require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
+        require(indexPagina < paginas.length, "Indice da pagina invalido.");
+        require(indexVersoes < paginas[indexVersoes].versoes.length, "Indice da versso invalido.");
+        
+
+        for (uint i = 0; i < paginas[indexPagina].versoes.length; i++) {
+            paginas[indexPagina].versoes[i].ativo = false;
+        }
+
+        paginas[indexPagina].versoes[indexVersoes].ativo = true;
+    }
+
 }

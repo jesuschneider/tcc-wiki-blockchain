@@ -14,7 +14,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "indice",
+						"name": "index",
 						"type": "uint256"
 					},
 					{
@@ -37,6 +37,24 @@
 					}
 				],
 				"name": "ativaDesativaBlockpedia",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "indexPagina",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "indexVersoes",
+						"type": "uint256"
+					}
+				],
+				"name": "ativaVersaoPorIndexVersoesEIndexPaginas",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -115,14 +133,19 @@
 				"name": "paginas",
 				"outputs": [
 					{
+						"internalType": "bool",
+						"name": "ativo",
+						"type": "bool"
+					},
+					{
 						"internalType": "address",
 						"name": "autor",
 						"type": "address"
 					},
 					{
-						"internalType": "bool",
-						"name": "ativo",
-						"type": "bool"
+						"internalType": "uint256",
+						"name": "dataCriacao",
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
@@ -162,27 +185,27 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0x4a88861cd33edc10d3ff03cb6d8c9221e29eb737618f25994b1ef515e92847e1",
+			"keccak256": "0x3c494d14c9848a3115b868a79e7f531a4f39e8baf434c1f6fe64d447e90744d3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://49ece5cb6d068d7f4ec789540680c41943ea659adc1159efe20386e951446938",
-				"dweb:/ipfs/QmcccBX2cXXNrd1PzvdZvALdhAcaRJJuChBsPetc6AGDN9"
+				"bzz-raw://58ae97313a6e462985a2ad73cb1e4db74fcadf6259e07feacdf5521d7dfbcb5f",
+				"dweb:/ipfs/QmewZz484gk3Sp52jhXmSUNHGZ25f9rkMhBUPjULmUMYfh"
 			]
 		},
 		"pagina.sol": {
-			"keccak256": "0x23af8b146aa53564cdcaacf183b8a93a8b2dc37492ac05546cd1386b8a512aea",
+			"keccak256": "0x01264ab3c897a9b7b0a4bbf9969c74c57ebf7464859c93761346569bee48e895",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://912c63a72a302be65307f0f038feef057e2f0032c989a97d69694dedd46413f0",
-				"dweb:/ipfs/Qmd9iQ2JjPZ29V2yK5WXMJrFb3QkpXeL1N9YJ9KVPZhE9T"
+				"bzz-raw://949ef31af306e815e79ec38d16747315ef2dd246e9fce768cfa8353355c75121",
+				"dweb:/ipfs/Qma1yxoA8V5gtowsBtL9KNNcrU8PComCdsgCbp17kYzNYN"
 			]
 		},
 		"versao.sol": {
-			"keccak256": "0x0c54f06f74f2bfb1ed3b6c0dc7c5678a8f570bd6c938b1eb7b5c2400bc8a7e08",
+			"keccak256": "0x02dce8f65284cc475dcd5b6b752e7a2434db68c2738bc55985605fbe4b3a1593",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://05f647ae7428d73a342dc30819d7fffac67d9cbdd1e66b099dc0d5c63de8bbfc",
-				"dweb:/ipfs/QmeEWFgkF3BTu4vm5poVgBYwVqTHXnd4dsLFRE3pvrRyz1"
+				"bzz-raw://dd730fc6a69928886187c64c28de8542aa16106e0c351e91811e4dd33b557328",
+				"dweb:/ipfs/QmZnszRM1renvViHUex9aBMb9Ha4ZTnXVmpx87dWArBS7M"
 			]
 		}
 	},
