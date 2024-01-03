@@ -104,6 +104,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "dataCriacao",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -111,7 +124,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getVersaoValidaPorIndexPaginas",
+				"name": "getConteudoVersaoValidaPorIndexPaginas",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -185,27 +198,27 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0x3c494d14c9848a3115b868a79e7f531a4f39e8baf434c1f6fe64d447e90744d3",
+			"keccak256": "0xa21e5ff5a513a573c68f469b4385968155fefb30a363227614c55d696ecceb5b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://58ae97313a6e462985a2ad73cb1e4db74fcadf6259e07feacdf5521d7dfbcb5f",
-				"dweb:/ipfs/QmewZz484gk3Sp52jhXmSUNHGZ25f9rkMhBUPjULmUMYfh"
+				"bzz-raw://016d77a00965ba2f559f65a0c6d8450d5be31b4443773f4799fa6c15673ea7df",
+				"dweb:/ipfs/QmPxV78KrbgJQstgfmqWTuQznrHzTRbW9fMHx1Phqngvpv"
 			]
 		},
 		"pagina.sol": {
-			"keccak256": "0x01264ab3c897a9b7b0a4bbf9969c74c57ebf7464859c93761346569bee48e895",
+			"keccak256": "0xecef8a3ffaef22ec5d260d34856c2e6a7d5d909f7e7f5e6df486c5514d8a097a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://949ef31af306e815e79ec38d16747315ef2dd246e9fce768cfa8353355c75121",
-				"dweb:/ipfs/Qma1yxoA8V5gtowsBtL9KNNcrU8PComCdsgCbp17kYzNYN"
+				"bzz-raw://5699dc88cd994a922a3e1c079e00c6939af433e2f5c493615aefc15bfe88013c",
+				"dweb:/ipfs/QmaHehB5wTNfT913kfHSwYhFhuxQLdouTVfvma8nTQBU8W"
 			]
 		},
 		"versao.sol": {
-			"keccak256": "0x02dce8f65284cc475dcd5b6b752e7a2434db68c2738bc55985605fbe4b3a1593",
+			"keccak256": "0xc3a5d0a162a5d051c5592bdedc719fe88e0595b36b1015ad8c177879970c2530",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dd730fc6a69928886187c64c28de8542aa16106e0c351e91811e4dd33b557328",
-				"dweb:/ipfs/QmZnszRM1renvViHUex9aBMb9Ha4ZTnXVmpx87dWArBS7M"
+				"bzz-raw://2606de98a6255991057ddca26b289318d5140fb4de1fdb23a155747ab9615c22",
+				"dweb:/ipfs/QmWwgfwmShkeCaJjHCy5tgiHJkKqyqSY9giRMqva5LzpTb"
 			]
 		}
 	},

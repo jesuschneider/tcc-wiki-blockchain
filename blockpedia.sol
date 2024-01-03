@@ -21,10 +21,10 @@ contract Blockpedia
         require(!tituloExiste(titulo), "Uma pagina com este titulo ja existe");
 
         Pagina storage novaPagina = paginas.push();
-        novaPagina.autor = msg.sender;
         novaPagina.ativo = true;
+        novaPagina.autor = msg.sender;
+        novaPagina.dataCriacao = block.timestamp;
         novaPagina.titulo = titulo;
-
         novaPagina.versoes.push(Versao(true, msg.sender, block.timestamp, conteudo));
     }
 
@@ -45,7 +45,7 @@ contract Blockpedia
         return false;
     }
 
-    function getVersaoValidaPorIndexPaginas(uint indice) public view returns (string memory)
+    function getConteudoVersaoValidaPorIndexPaginas(uint indice) public view returns (string memory)
     {
         require(indice < paginas.length, "Indice fora do alcance");
 
@@ -77,15 +77,22 @@ contract Blockpedia
         }));
     }
 
-    function ativaVersaoPorIndexVersoesEIndexPaginas(uint indexPagina, uint indexVersoes)public
+    function ativaVersaoPorIndexVersoesEIndexPaginas(uint indexPagina, uint indexVersoes) public
     {
         require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(indexPagina < paginas.length, "Indice da pagina invalido.");
-        require(indexVersoes < paginas[indexVersoes].versoes.length, "Indice da versso invalido.");
-        
+        require(indexVersoes < paginas[indexPagina].versoes.length, "Indice da versao invalido.");
 
-        for (uint i = 0; i < paginas[indexPagina].versoes.length; i++) {
-            paginas[indexPagina].versoes[i].ativo = false;
+        if(paginas[indexPagina].versoes[indexVersoes].ativo) return;
+
+        for (uint i = paginas[indexPagina].versoes.length; i > 0; i--)
+        {
+            uint indexAtual = i - 1;
+            if (paginas[indexPagina].versoes[indexAtual].ativo)
+            {
+                paginas[indexPagina].versoes[indexAtual].ativo = false;
+                break;
+            }
         }
 
         paginas[indexPagina].versoes[indexVersoes].ativo = true;
