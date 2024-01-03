@@ -81,6 +81,7 @@ contract Blockpedia
     {
         require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(indexPagina < paginas.length, "Indice da pagina invalido.");
+        require(paginas[indexPagina].ativo == true, "A alteracao de versao so e permitida quando a pagina esta ativa");
         require(indexVersoes < paginas[indexPagina].versoes.length, "Indice da versao invalido.");
 
         if(paginas[indexPagina].versoes[indexVersoes].ativo) return;

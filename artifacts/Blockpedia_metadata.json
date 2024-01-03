@@ -198,11 +198,11 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0xa21e5ff5a513a573c68f469b4385968155fefb30a363227614c55d696ecceb5b",
+			"keccak256": "0x742d97926a9cb36474235638275ab258ba05a04c6b5e490a1db073dc1a7199f9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://016d77a00965ba2f559f65a0c6d8450d5be31b4443773f4799fa6c15673ea7df",
-				"dweb:/ipfs/QmPxV78KrbgJQstgfmqWTuQznrHzTRbW9fMHx1Phqngvpv"
+				"bzz-raw://8fb55ee110b5c23debdbd6e0fe7bb641af702ca5df79656710ba1a99117147e6",
+				"dweb:/ipfs/QmPnjneTZKU6XkqZ68cDEjMVdeTmgahZcWu9yf2AnyK2Ep"
 			]
 		},
 		"pagina.sol": {
