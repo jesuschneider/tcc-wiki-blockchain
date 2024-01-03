@@ -65,11 +65,9 @@ contract Blockpedia
     {
         require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(index < paginas.length, "Indice fora do alcance");
+        require(paginas[index].ativo == true, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
         
-        Pagina storage pagina = paginas[index];
-        require(pagina.ativo == true, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
-        
-        pagina.versoes.push(Versao({
+        paginas[index].versoes.push(Versao({
             ativo: false,
             autor: msg.sender,
             dataCriacao : block.timestamp,
