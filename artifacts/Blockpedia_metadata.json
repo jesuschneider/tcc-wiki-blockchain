@@ -47,6 +47,19 @@
 						"internalType": "uint256",
 						"name": "indexPagina",
 						"type": "uint256"
+					}
+				],
+				"name": "ativaPaginaPorIndexPaginas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "indexPagina",
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
@@ -114,6 +127,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "indexPagina",
+						"type": "uint256"
+					}
+				],
+				"name": "desativaPaginaPorIndexPaginas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -198,11 +224,11 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0x8bd60cd2ba1fffea65dbb7c26119286129efe68167c871006d8c2aa7bd302230",
+			"keccak256": "0x783a46f6bd41d09c8c481a893d73e25004c781463cfe261ad7763d596939e7cc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9b11b35520f731c7f236b64afe76d100688be351cca6d80f4ec29cd3bd08f7a4",
-				"dweb:/ipfs/QmWuXQGWRy6iRYSz7M7725a2tcownw4vFwbZtZfxRLrwG8"
+				"bzz-raw://430fc261cd49532de538acb524ba32d954c446a056ff0ec7abf45555d1337b75",
+				"dweb:/ipfs/QmYfYjgSQ1WAnGTk6LtToW9EBKcmUU8Hj3gGFXtPMoCxmj"
 			]
 		},
 		"pagina.sol": {

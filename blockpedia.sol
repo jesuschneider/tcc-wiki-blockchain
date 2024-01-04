@@ -13,12 +13,13 @@ contract Blockpedia
     constructor()
     {
         autor = msg.sender;
+        criarPagina("Inicio", "Bem vindo a Blockpeida, a enciclopedia na blockchain");
     }
 
     function criarPagina(string memory titulo, string memory conteudo) public
     {
-        require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
-        require(!tituloExiste(titulo), "Uma pagina com este titulo ja existe");
+        require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
+        require(!existeTituloAtivo(titulo), "Ja existe pagina ativa com este titulo");
 
         Pagina storage novaPagina = paginas.push();
         novaPagina.ativo = true;
@@ -34,13 +35,14 @@ contract Blockpedia
         ativo = _ativo;
     }
 
-    function tituloExiste(string memory titulo) internal view returns (bool)
+    function existeTituloAtivo(string memory titulo) internal view returns (bool)
     {
         //keccak256 é uma funcao hash, estou usando por conta que não tem comparacao de string em solidity
         //abi.encodePacked() serve para transformar a string em um "pacote" binario antes de transformar em hash
         for (uint i = 0; i < paginas.length; i++)
         {
-            if (keccak256(abi.encodePacked(paginas[i].titulo)) == keccak256(abi.encodePacked(titulo))) return true;
+            if (paginas[i].ativo)
+                if (keccak256(abi.encodePacked(paginas[i].titulo)) == keccak256(abi.encodePacked(titulo))) return true;
         }
         return false;
     }
@@ -58,14 +60,14 @@ contract Blockpedia
         {
             if(pagina.versoes[i].ativo) return pagina.versoes[i];
         }
-        revert("Nenhuma versao valida encontrada");
+        revert("Nenhuma vercao ativa encontrada para esta pagina");
     }
 
     function adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas(uint index, string memory conteudo) public
     {
-        require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
+        require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(index < paginas.length, "Indice fora do alcance");
-        require(paginas[index].ativo == true, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
+        require(paginas[index].ativo, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
         
         paginas[index].versoes.push(Versao({
             ativo: false,
@@ -77,10 +79,10 @@ contract Blockpedia
 
     function ativaVersaoPorIndexVersoesEIndexPaginas(uint indexPagina, uint indexVersoes) public
     {
-        require(ativo == true, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
-        require(indexPagina < paginas.length, "Indice da pagina invalido.");
-        require(paginas[indexPagina].ativo == true, "A alteracao de versao so e permitida quando a pagina esta ativa");
-        require(indexVersoes < paginas[indexPagina].versoes.length, "Indice da versao invalido.");
+        require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
+        require(indexPagina < paginas.length, "Indice da pagina fora do alcance");
+        require(paginas[indexPagina].ativo, "A alteracao de versao so e permitida quando a pagina esta ativa");
+        require(indexVersoes < paginas[indexPagina].versoes.length, "Indice da versao fora do alcance");
 
         if(paginas[indexPagina].versoes[indexVersoes].ativo) return;
 
@@ -95,6 +97,24 @@ contract Blockpedia
         }
 
         paginas[indexPagina].versoes[indexVersoes].ativo = true;
+    }
+
+    function desativaPaginaPorIndexPaginas(uint indexPagina)public
+    {
+        require(ativo, "A desativacao de paginas so e permitida quando a Blockpedia esta ativa");
+        require(indexPagina < paginas.length, "Indice da pagina fora do alcance");
+        if(!paginas[indexPagina].ativo) return;
+        paginas[indexPagina].ativo=false;
+    }
+
+    function ativaPaginaPorIndexPaginas(uint indexPagina)public
+    {
+        require(ativo, "A ativacao de paginas so e permitida quando a Blockpedia esta ativa");
+        require(indexPagina < paginas.length, "Indice da pagina fora do alcance");
+        require(!existeTituloAtivo(paginas[indexPagina].titulo), "Ja existe pagina ativa com este titulo");
+
+        if(paginas[indexPagina].ativo) return;
+        paginas[indexPagina].ativo=true;
     }
 
 }
