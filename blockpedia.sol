@@ -32,17 +32,17 @@ contract Blockpedia
         criarPagina("Inicio", "Bem vindo a Blockpeida, a enciclopedia na blockchain");
     }
 
-    function criarPagina(string memory titulo, string memory conteudo) public
+    function criarPagina(string memory _titulo, string memory _conteudo) public
     {
         require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
-        require(!existeTituloAtivo(titulo), "Ja existe pagina ativa com este titulo");
+        require(!existeTituloAtivo(_titulo), "Ja existe pagina ativa com este titulo");
 
         Pagina storage novaPagina = paginas.push();
         novaPagina.ativo = true;
         novaPagina.autor = msg.sender;
         novaPagina.dataCriacao = block.timestamp;
-        novaPagina.titulo = titulo;
-        novaPagina.versoes.push(Versao(true, msg.sender, block.timestamp, conteudo));
+        novaPagina.titulo = _titulo;
+        novaPagina.versoes.push(Versao(true, msg.sender, block.timestamp, _conteudo));
     }
 
     function ativaDesativaBlockpedia(bool _ativo) public
@@ -51,94 +51,94 @@ contract Blockpedia
         ativo = _ativo;
     }
 
-    function existeTituloAtivo(string memory titulo) internal view returns (bool)
+    function existeTituloAtivo(string memory _titulo) internal view returns (bool)
     {
         for (uint i = 0; i < paginas.length; i++)
         {
             if (paginas[i].ativo)
-                if (comparaString(paginas[i].titulo, titulo))return true;
+                if (comparaString(paginas[i].titulo, _titulo))return true;
         }
         return false;
     }
 
-    function getConteudoVersaoValidaPorIndexPaginas(uint indice) public view returns (string memory)
+    function getConteudoVersaoValidaPorIndexPaginas(uint _indice) public view returns (string memory)
     {
-        require(indice < paginas.length, "Indice fora do alcance");
+        require(_indice < paginas.length, "Indice fora do alcance");
 
-        return getVersaoValidaDeUmaPagina(paginas[indice]).conteudo;
+        return getVersaoValidaDeUmaPagina(paginas[_indice]).conteudo;
     }
 
-    function getVersaoValidaDeUmaPagina(Pagina memory pagina)internal pure returns (Versao memory)
+    function getVersaoValidaDeUmaPagina(Pagina memory _pagina)internal pure returns (Versao memory)
     {
-        for(uint i = 0; i < pagina.versoes.length; i++)
+        for(uint i = 0; i < _pagina.versoes.length; i++)
         {
-            if(pagina.versoes[i].ativo) return pagina.versoes[i];
+            if(_pagina.versoes[i].ativo) return _pagina.versoes[i];
         }
         revert("Nenhuma vercao ativa encontrada para esta pagina");
     }
 
-    function adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas(uint index, string memory conteudo) public
+    function adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas(uint _index, string memory _conteudo) public
     {
         require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
-        require(index < paginas.length, "Indice fora do alcance");
-        require(paginas[index].ativo, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
+        require(_index < paginas.length, "Indice fora do alcance");
+        require(paginas[_index].ativo, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
         
-        paginas[index].versoes.push(Versao({
+        paginas[_index].versoes.push(Versao({
             ativo: false,
             autor: msg.sender,
             dataCriacao : block.timestamp,
-            conteudo: conteudo
+            conteudo: _conteudo
         }));
     }
 
-    function ativaVersaoPorIndexVersoesEIndexPaginas(uint indexPagina, uint indexVersoes) public
+    function ativaVersaoPorIndexVersoesEIndexPaginas(uint _indexPagina, uint _indexVersoes) public
     {
         require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
-        require(indexPagina < paginas.length, "Indice da pagina fora do alcance");
-        require(paginas[indexPagina].ativo, "A alteracao de versao so e permitida quando a pagina esta ativa");
-        require(indexVersoes < paginas[indexPagina].versoes.length, "Indice da versao fora do alcance");
+        require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
+        require(paginas[_indexPagina].ativo, "A alteracao de versao so e permitida quando a pagina esta ativa");
+        require(_indexVersoes < paginas[_indexPagina].versoes.length, "Indice da versao fora do alcance");
 
-        if(paginas[indexPagina].versoes[indexVersoes].ativo) return;
+        if(paginas[_indexPagina].versoes[_indexVersoes].ativo) return;
 
-        for (uint i = paginas[indexPagina].versoes.length; i > 0; i--)
+        for (uint i = paginas[_indexPagina].versoes.length; i > 0; i--)
         {
             uint indexAtual = i - 1;
-            if (paginas[indexPagina].versoes[indexAtual].ativo)
+            if (paginas[_indexPagina].versoes[indexAtual].ativo)
             {
-                paginas[indexPagina].versoes[indexAtual].ativo = false;
+                paginas[_indexPagina].versoes[indexAtual].ativo = false;
                 break;
             }
         }
 
-        paginas[indexPagina].versoes[indexVersoes].ativo = true;
+        paginas[_indexPagina].versoes[_indexVersoes].ativo = true;
     }
 
-    function desativaPaginaPorIndexPaginas(uint indexPagina)public
+    function desativaPaginaPorIndexPaginas(uint _indexPagina)public
     {
         require(ativo, "A desativacao de paginas so e permitida quando a Blockpedia esta ativa");
-        require(indexPagina < paginas.length, "Indice da pagina fora do alcance");
-        if(!paginas[indexPagina].ativo) return;
-        paginas[indexPagina].ativo=false;
+        require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
+        if(!paginas[_indexPagina].ativo) return;
+        paginas[_indexPagina].ativo=false;
     }
 
-    function ativaPaginaPorIndexPaginas(uint indexPagina)public
+    function ativaPaginaPorIndexPaginas(uint _indexPagina)public
     {
         require(ativo, "A ativacao de paginas so e permitida quando a Blockpedia esta ativa");
-        require(indexPagina < paginas.length, "Indice da pagina fora do alcance");
-        require(!existeTituloAtivo(paginas[indexPagina].titulo), "Ja existe pagina ativa com este titulo");
+        require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
+        require(!existeTituloAtivo(paginas[_indexPagina].titulo), "Ja existe pagina ativa com este titulo");
 
-        if(paginas[indexPagina].ativo) return;
-        paginas[indexPagina].ativo=true;
+        if(paginas[_indexPagina].ativo) return;
+        paginas[_indexPagina].ativo=true;
     }
 
-    function getPaginasPorTitulo(string memory titulo) public view returns (uint[] memory)
+    function getPaginasPorTitulo(string memory _titulo) public view returns (uint[] memory)
     {
         uint[] memory indicesPaginasComTitulo = new uint[](paginas.length);
         uint contador = 0;
 
         for (uint i = 0; i < paginas.length; i++)
         {
-            if (comparaString(paginas[i].titulo, titulo))
+            if (comparaString(paginas[i].titulo, _titulo))
             {
                 indicesPaginasComTitulo[contador] = i;
                 contador++;
@@ -155,11 +155,11 @@ contract Blockpedia
         return indices;
     }
 
-    function comparaString(string memory primeiraString, string memory segundaString)internal pure returns(bool)
+    function comparaString(string memory _primeiraString, string memory _segundaString)internal pure returns(bool)
     {
         //keccak256 é uma funcao hash, estou usando por conta que não tem comparacao de string em solidity
         //abi.encodePacked() serve para transformar a string em um "pacote" binario antes de transformar em hash
-        return (keccak256(abi.encodePacked(primeiraString)) == keccak256(abi.encodePacked(segundaString))) ? true:false;
+        return (keccak256(abi.encodePacked(_primeiraString)) == keccak256(abi.encodePacked(_segundaString))) ? true:false;
     }
 
 }
