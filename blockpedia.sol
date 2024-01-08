@@ -5,8 +5,8 @@ pragma solidity 0.8.0;
 contract Blockpedia
 {
     bool public ativo = true; 
-    address public autor; 
-    uint256 public dataCriacao = block.timestamp;
+    address public immutable autor; 
+    uint256 public immutable dataCriacao;
     Pagina[] public paginas; 
 
     struct Pagina
@@ -29,12 +29,12 @@ contract Blockpedia
     constructor()
     {
         autor = msg.sender;
+        dataCriacao = block.timestamp;
         criarPagina("Inicio", "Bem vindo a Blockpeida, a enciclopedia na blockchain");
     }
 
-    function criarPagina(string memory _titulo, string memory _conteudo) public
+    function criarPagina(string memory _titulo, string memory _conteudo) public somenteSeAtivo 
     {
-        require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(!existeTituloAtivo(_titulo), "Ja existe pagina ativa com este titulo");
 
         Pagina storage novaPagina = paginas.push();
@@ -77,9 +77,8 @@ contract Blockpedia
         revert("Nenhuma vercao ativa encontrada para esta pagina");
     }
 
-    function adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas(uint _index, string memory _conteudo) public
+    function adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas(uint _index, string memory _conteudo) public somenteSeAtivo
     {
-        require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(_index < paginas.length, "Indice fora do alcance");
         require(paginas[_index].ativo, "A adicao de novas vercoes so e permitida quando a pagina esta ativa");
         
@@ -91,9 +90,8 @@ contract Blockpedia
         }));
     }
 
-    function ativaVersaoPorIndexVersoesEIndexPaginas(uint _indexPagina, uint _indexVersoes) public
+    function ativaVersaoPorIndexVersoesEIndexPaginas(uint _indexPagina, uint _indexVersoes) public somenteSeAtivo
     {
-        require(ativo, "A adicao de novas paginas so e permitida quando a Blockpedia esta ativa");
         require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
         require(paginas[_indexPagina].ativo, "A alteracao de versao so e permitida quando a pagina esta ativa");
         require(_indexVersoes < paginas[_indexPagina].versoes.length, "Indice da versao fora do alcance");
@@ -113,17 +111,15 @@ contract Blockpedia
         paginas[_indexPagina].versoes[_indexVersoes].ativo = true;
     }
 
-    function desativaPaginaPorIndexPaginas(uint _indexPagina)public
+    function desativaPaginaPorIndexPaginas(uint _indexPagina)public somenteSeAtivo
     {
-        require(ativo, "A desativacao de paginas so e permitida quando a Blockpedia esta ativa");
         require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
         if(!paginas[_indexPagina].ativo) return;
         paginas[_indexPagina].ativo=false;
     }
 
-    function ativaPaginaPorIndexPaginas(uint _indexPagina)public
+    function ativaPaginaPorIndexPaginas(uint _indexPagina)public somenteSeAtivo
     {
-        require(ativo, "A ativacao de paginas so e permitida quando a Blockpedia esta ativa");
         require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
         require(!existeTituloAtivo(paginas[_indexPagina].titulo), "Ja existe pagina ativa com este titulo");
 
@@ -160,6 +156,22 @@ contract Blockpedia
         //keccak256 é uma funcao hash, estou usando por conta que não tem comparacao de string em solidity
         //abi.encodePacked() serve para transformar a string em um "pacote" binario antes de transformar em hash
         return (keccak256(abi.encodePacked(_primeiraString)) == keccak256(abi.encodePacked(_segundaString))) ? true:false;
+    }
+
+    modifier somenteSeAtivo
+    {
+        require(ativo, "A acao so e permitida quando a Blockpedia esta ativa");
+        _;
+    }
+
+    receive() external payable
+    {
+        revert();
+    }
+
+    fallback() external payable
+    {
+        revert();
     }
 
 }

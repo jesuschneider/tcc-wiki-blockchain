@@ -11,15 +11,19 @@
 				"type": "constructor"
 			},
 			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "index",
+						"name": "_index",
 						"type": "uint256"
 					},
 					{
 						"internalType": "string",
-						"name": "conteudo",
+						"name": "_conteudo",
 						"type": "string"
 					}
 				],
@@ -45,7 +49,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "indexPagina",
+						"name": "_indexPagina",
 						"type": "uint256"
 					}
 				],
@@ -58,12 +62,12 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "indexPagina",
+						"name": "_indexPagina",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "indexVersoes",
+						"name": "_indexVersoes",
 						"type": "uint256"
 					}
 				],
@@ -102,12 +106,12 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "titulo",
+						"name": "_titulo",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "conteudo",
+						"name": "_conteudo",
 						"type": "string"
 					}
 				],
@@ -133,7 +137,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "indexPagina",
+						"name": "_indexPagina",
 						"type": "uint256"
 					}
 				],
@@ -146,7 +150,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "indice",
+						"name": "_indice",
 						"type": "uint256"
 					}
 				],
@@ -165,7 +169,7 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "titulo",
+						"name": "_titulo",
 						"type": "string"
 					}
 				],
@@ -213,6 +217,10 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -243,11 +251,11 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0xbd755db544d20993e33b8966f8892d330654c61aed795403d0b7d5a5cd86a083",
+			"keccak256": "0x8028bf6fbc0f2cea72ada4ca7ec68ffd453772599470d4c10690d76216ce4427",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://eb6f110912cbcdfad12d48c223c39abbb6688727e4eb7eb6ed7ccecb1054e29e",
-				"dweb:/ipfs/QmQEgkxhLnBLEKuYRBwMcRy6HWvMn9fMMAgmLwtndHWTbC"
+				"bzz-raw://8d8b5f08386e4b3678863f31f5e217b5d7041a295a05ea073f696fc1bdd9350c",
+				"dweb:/ipfs/QmZ1zwuCeRKv3PCLmh4Beh3GSpzscViL53wFQm4UZAkdoJ"
 			]
 		}
 	},
