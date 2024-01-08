@@ -164,6 +164,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "titulo",
+						"type": "string"
+					}
+				],
+				"name": "getPaginasPorTitulo",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -224,27 +243,11 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0x783a46f6bd41d09c8c481a893d73e25004c781463cfe261ad7763d596939e7cc",
+			"keccak256": "0xbd755db544d20993e33b8966f8892d330654c61aed795403d0b7d5a5cd86a083",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://430fc261cd49532de538acb524ba32d954c446a056ff0ec7abf45555d1337b75",
-				"dweb:/ipfs/QmYfYjgSQ1WAnGTk6LtToW9EBKcmUU8Hj3gGFXtPMoCxmj"
-			]
-		},
-		"pagina.sol": {
-			"keccak256": "0xecef8a3ffaef22ec5d260d34856c2e6a7d5d909f7e7f5e6df486c5514d8a097a",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://5699dc88cd994a922a3e1c079e00c6939af433e2f5c493615aefc15bfe88013c",
-				"dweb:/ipfs/QmaHehB5wTNfT913kfHSwYhFhuxQLdouTVfvma8nTQBU8W"
-			]
-		},
-		"versao.sol": {
-			"keccak256": "0xc3a5d0a162a5d051c5592bdedc719fe88e0595b36b1015ad8c177879970c2530",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://2606de98a6255991057ddca26b289318d5140fb4de1fdb23a155747ab9615c22",
-				"dweb:/ipfs/QmWwgfwmShkeCaJjHCy5tgiHJkKqyqSY9giRMqva5LzpTb"
+				"bzz-raw://eb6f110912cbcdfad12d48c223c39abbb6688727e4eb7eb6ed7ccecb1054e29e",
+				"dweb:/ipfs/QmQEgkxhLnBLEKuYRBwMcRy6HWvMn9fMMAgmLwtndHWTbC"
 			]
 		}
 	},

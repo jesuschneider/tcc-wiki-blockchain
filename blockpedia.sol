@@ -1,7 +1,6 @@
 pragma solidity 0.8.0;
 // SPDX-License-Identifier: MIT
 
-import "./pagina.sol";
 
 contract Blockpedia
 {
@@ -9,6 +8,23 @@ contract Blockpedia
     address public autor; 
     uint256 public dataCriacao = block.timestamp;
     Pagina[] public paginas; 
+
+    struct Pagina
+    {
+        bool ativo;
+        address autor;
+        uint256 dataCriacao;
+        string titulo;
+        Versao[] versoes ;
+    }
+
+    struct Versao
+    {
+        bool ativo;
+        address autor;
+        uint256 dataCriacao;
+        string conteudo;
+    }
 
     constructor()
     {
@@ -37,12 +53,10 @@ contract Blockpedia
 
     function existeTituloAtivo(string memory titulo) internal view returns (bool)
     {
-        //keccak256 é uma funcao hash, estou usando por conta que não tem comparacao de string em solidity
-        //abi.encodePacked() serve para transformar a string em um "pacote" binario antes de transformar em hash
         for (uint i = 0; i < paginas.length; i++)
         {
             if (paginas[i].ativo)
-                if (keccak256(abi.encodePacked(paginas[i].titulo)) == keccak256(abi.encodePacked(titulo))) return true;
+                if (comparaString(paginas[i].titulo, titulo))return true;
         }
         return false;
     }
@@ -115,6 +129,37 @@ contract Blockpedia
 
         if(paginas[indexPagina].ativo) return;
         paginas[indexPagina].ativo=true;
+    }
+
+    function getPaginasPorTitulo(string memory titulo) public view returns (uint[] memory)
+    {
+        uint[] memory indicesPaginasComTitulo = new uint[](paginas.length);
+        uint contador = 0;
+
+        for (uint i = 0; i < paginas.length; i++)
+        {
+            if (comparaString(paginas[i].titulo, titulo))
+            {
+                indicesPaginasComTitulo[contador] = i;
+                contador++;
+            }
+        }
+
+        // Criar um novo array com o tamanho exato
+        uint[] memory indices = new uint[](contador);
+        for (uint j = 0; j < contador; j++)
+        {
+            indices[j] = indicesPaginasComTitulo[j];
+        }
+
+        return indices;
+    }
+
+    function comparaString(string memory primeiraString, string memory segundaString)internal pure returns(bool)
+    {
+        //keccak256 é uma funcao hash, estou usando por conta que não tem comparacao de string em solidity
+        //abi.encodePacked() serve para transformar a string em um "pacote" binario antes de transformar em hash
+        return (keccak256(abi.encodePacked(primeiraString)) == keccak256(abi.encodePacked(segundaString))) ? true:false;
     }
 
 }
