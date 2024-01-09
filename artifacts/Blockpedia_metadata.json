@@ -251,11 +251,11 @@
 	},
 	"sources": {
 		"blockpedia.sol": {
-			"keccak256": "0x8028bf6fbc0f2cea72ada4ca7ec68ffd453772599470d4c10690d76216ce4427",
+			"keccak256": "0xd306035f3d2c3c36928a3fcb642f6b130366e68fc08e325bdfbf63785afd54fa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8d8b5f08386e4b3678863f31f5e217b5d7041a295a05ea073f696fc1bdd9350c",
-				"dweb:/ipfs/QmZ1zwuCeRKv3PCLmh4Beh3GSpzscViL53wFQm4UZAkdoJ"
+				"bzz-raw://5279eef30fde4243533f49ae99f037f760adfea4189fa2989fcc33aa5644edd3",
+				"dweb:/ipfs/QmNvF8XCEi15kesT8WMnifZcbnogrMEE4xgRQe7EQesQEr"
 			]
 		}
 	},

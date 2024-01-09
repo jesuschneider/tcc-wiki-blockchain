@@ -56,7 +56,8 @@ contract Blockpedia
         for (uint i = 0; i < paginas.length; i++)
         {
             if (paginas[i].ativo)
-                if (comparaString(paginas[i].titulo, _titulo))return true;
+                if (comparaString(paginas[i].titulo, _titulo))
+                    return true;
         }
         return false;
     }
@@ -72,7 +73,8 @@ contract Blockpedia
     {
         for(uint i = 0; i < _pagina.versoes.length; i++)
         {
-            if(_pagina.versoes[i].ativo) return _pagina.versoes[i];
+            if(_pagina.versoes[i].ativo)
+                return _pagina.versoes[i];
         }
         revert("Nenhuma vercao ativa encontrada para esta pagina");
     }
@@ -96,7 +98,8 @@ contract Blockpedia
         require(paginas[_indexPagina].ativo, "A alteracao de versao so e permitida quando a pagina esta ativa");
         require(_indexVersoes < paginas[_indexPagina].versoes.length, "Indice da versao fora do alcance");
 
-        if(paginas[_indexPagina].versoes[_indexVersoes].ativo) return;
+        if(paginas[_indexPagina].versoes[_indexVersoes].ativo)
+            return;
 
         for (uint i = paginas[_indexPagina].versoes.length; i > 0; i--)
         {
@@ -114,7 +117,10 @@ contract Blockpedia
     function desativaPaginaPorIndexPaginas(uint _indexPagina)public somenteSeAtivo
     {
         require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
-        if(!paginas[_indexPagina].ativo) return;
+
+        if(!paginas[_indexPagina].ativo)
+            return;
+
         paginas[_indexPagina].ativo=false;
     }
 
@@ -123,7 +129,9 @@ contract Blockpedia
         require(_indexPagina < paginas.length, "Indice da pagina fora do alcance");
         require(!existeTituloAtivo(paginas[_indexPagina].titulo), "Ja existe pagina ativa com este titulo");
 
-        if(paginas[_indexPagina].ativo) return;
+        if(paginas[_indexPagina].ativo)
+            return;
+            
         paginas[_indexPagina].ativo=true;
     }
 
