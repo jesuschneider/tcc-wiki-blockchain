@@ -33,6 +33,79 @@ contract Blockpedia
         criarPagina("Inicio", "Bem vindo a Blockpeida, a enciclopedia na blockchain");
     }
 
+    function getVersaoValidaDeUmaPagina(Pagina memory _pagina)public pure returns (Versao memory)
+    {
+        for(uint i = 0; i < _pagina.versoes.length; i++)
+        {
+            if(_pagina.versoes[i].ativo)
+                return _pagina.versoes[i];
+        }
+        revert("Nenhuma vercao ativa encontrada para esta pagina");
+    }
+
+    function getAllDadosBlockpedia() public view returns (bool, address, uint256, Pagina[] memory)
+    {
+        return (ativo, autor, dataCriacao, paginas);
+    }
+
+    function getInformacoesBlockpedia() public view returns(bool, address, uint256, uint256)
+    {
+        return (ativo, autor, dataCriacao, paginas.length);
+    }
+
+    function getAllPaginasComTodasVersoes() public view returns (Pagina[] memory) {
+        return paginas;
+    }
+
+    function getAllPaginasAtivas() public view returns (Pagina[] memory)
+    {
+        uint256 contadorAtivas = 0;
+
+        // Contar páginas ativas
+        for (uint256 i = 0; i < paginas.length; i++) { if (paginas[i].ativo) contadorAtivas++;}
+
+        // Criar array para armazenar páginas ativas
+        Pagina[] memory paginasAtivas = new Pagina[](contadorAtivas);
+        uint256 j = 0;
+
+        // Preencher array com páginas ativas
+        for (uint256 i = 0; i < paginas.length; i++) {
+            if (paginas[i].ativo) {
+                paginasAtivas[j] = paginas[i];
+                j++;
+            }
+        }
+
+        return paginasAtivas;
+    }
+
+    function getAllPaginasAtivasSomenteComAsVersoesAtivas() public view returns (Pagina[] memory)
+    {
+        Pagina[] memory paginasAtivas = this.getAllPaginasAtivas();
+        Pagina[] memory paginasSomenteComVersoesAtivas = new Pagina[](paginasAtivas.length);
+
+        for (uint256 i = 0; i < paginasAtivas.length; i++) {
+            Versao[] memory versaoAtivaArray = new Versao[](1);
+            versaoAtivaArray[0] = this.getVersaoValidaDeUmaPagina(paginasAtivas[i]);
+
+            paginasSomenteComVersoesAtivas[i] = Pagina({
+                ativo: paginasAtivas[i].ativo,
+                autor: paginasAtivas[i].autor,
+                dataCriacao: paginasAtivas[i].dataCriacao,
+                titulo: paginasAtivas[i].titulo,
+                versoes: versaoAtivaArray
+            });
+        }
+
+        return paginasSomenteComVersoesAtivas;
+    }
+
+    function getPaginaComVersoes(uint _indice) public view returns (Pagina memory) {
+        require(_indice < paginas.length, "Indice fora do alcance");
+
+        return paginas[_indice];
+    }
+
     function criarPagina(string memory _titulo, string memory _conteudo) public somenteSeAtivo 
     {
         require(!existeTituloAtivo(_titulo), "Ja existe pagina ativa com este titulo");
@@ -48,6 +121,7 @@ contract Blockpedia
     function ativaDesativaBlockpedia(bool _ativo) public
     {
         require(msg.sender == autor,"Somente o dono desta Blockpedia pode alterar o atributo ativo");
+        if(ativo == _ativo)return;
         ativo = _ativo;
     }
 
@@ -62,21 +136,11 @@ contract Blockpedia
         return false;
     }
 
-    function getConteudoVersaoValidaPorIndexPaginas(uint _indice) public view returns (string memory)
+    function getConteudoVersaoValidaPorIndexPaginas(uint _indice) internal view returns (string memory)
     {
         require(_indice < paginas.length, "Indice fora do alcance");
 
         return getVersaoValidaDeUmaPagina(paginas[_indice]).conteudo;
-    }
-
-    function getVersaoValidaDeUmaPagina(Pagina memory _pagina)internal pure returns (Versao memory)
-    {
-        for(uint i = 0; i < _pagina.versoes.length; i++)
-        {
-            if(_pagina.versoes[i].ativo)
-                return _pagina.versoes[i];
-        }
-        revert("Nenhuma vercao ativa encontrada para esta pagina");
     }
 
     function adicionaNovaVercaoDesativadaAPaginaPorIndexPaginas(uint _index, string memory _conteudo) public somenteSeAtivo
